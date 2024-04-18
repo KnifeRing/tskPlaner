@@ -1,7 +1,24 @@
 package ru.netology.tskplaner;
 
-public class Epic {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+public class Epic extends Task {
+    protected String[] subtasks;
+
+    public Epic(int id, String[] subtasks) {
+        super(id);
+        this.subtasks = subtasks;
+    }
+
+    public String[] getSubtasks() {
+        return subtasks;
+    }
+
+    @Override
+    public boolean matches(String query) {
+        for (String subtask : subtasks) {
+            if (subtask.contains(query)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
